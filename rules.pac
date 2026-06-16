@@ -1,15 +1,22 @@
 function FindProxyForURL(url, host) {
-    // 1. 规则：需要走代理的网站
-    // 如果访问的网站是这些，就通过代理服务器
+    // 1. 需要走代理的网站（把你常用的加进来）
     if (shExpMatch(host, "*.google.com") ||
+        shExpMatch(host, "*.googleapis.com") ||
+        shExpMatch(host, "*.gstatic.com") ||
         shExpMatch(host, "*.youtube.com") ||
+        shExpMatch(host, "*.googlevideo.com") ||
         shExpMatch(host, "*.twitter.com") ||
+        shExpMatch(host, "*.x.com") ||
         shExpMatch(host, "*.facebook.com") ||
-        shExpMatch(host, "*.wikipedia.org")) {
-        // 把下面这行里的 代理IP 和 端口 换成你自己的
-        return "PROXY 192.168.3.3:7890";
+        shExpMatch(host, "*.instagram.com") ||
+        shExpMatch(host, "*.wikipedia.org") ||
+        shExpMatch(host, "*.github.com") ||
+        shExpMatch(host, "*.githubusercontent.com") ||
+        shExpMatch(host, "*.telegram.org") ||
+        shExpMatch(host, "*.whatsapp.com")) {
+        return "PROXY 192.168.3.3:7890";  // 换成你自己的代理
     }
 
-    // 2. 默认规则：其它所有情况，直接连接
+    // 2. 所有其他网站，直接连接
     return "DIRECT";
 }
